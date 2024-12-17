@@ -1,7 +1,30 @@
 
-export const rawMapData : any = {
+export interface MapData {
+  id: string;
+  name: string;
+  creator: string;
+  player1: string;
+  player2: string;
+  player3: string;
+  player4: string;
+  width: number;
+  height: number;
+  entities: {
+    template: {
+      type: string;
+    };
+    [key: string]: {
+      type: string;
+    };
+  };
+  x: number;
+  y: number;
+  scale: number;
+  selected: { x: number, y: number };
+  tool: string;
+}
 
-  // // fields sent to database
+export const defaultMapData: MapData = {
   id: "",
   name: "map_name",
   creator: "",
@@ -14,14 +37,11 @@ export const rawMapData : any = {
   entities: {template: {
     type: "wall", // // "wall" or "zombie"
 }},
-
-  // // fields generated on front end
-  // // TO DO: strip and add these before saving
   x: 0,
   y: 0,
   scale: 30,
   selected: { x: 0, y: 0 },
   tool: "select",
-}
+};
 
 
