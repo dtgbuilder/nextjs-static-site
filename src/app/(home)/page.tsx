@@ -1,8 +1,8 @@
 import {Box, Stack} from "@mui/material";
-import {Hero} from "@/component/display/hero"
-import {Intro} from "@/component/display/intro"
+import {Hero} from "@/component/display/Hero"
+import {Intro} from "@/component/display/Intro"
 
-export default function Home() {
+export default function Page() {
   return (
     <Box
         sx={{
