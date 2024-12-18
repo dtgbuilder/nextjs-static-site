@@ -1,36 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import Canvas from "./canvas/Canvas";
+import { use } from "react";
+import {MapContext} from "@/component/map/MapContextProvider";
 
-import Canvas from "./canvas";
+export function Map() {
 
-import { rawMapData } from "./utilities/map-data";
+    const {
+        mapData,
+        setMapData
+    } = use(MapContext);
 
-export function DashboardWrapper() {
-
-  const fetchRawMapData = () => {
-    const mapJSON: any = sessionStorage.getItem("tabletopUI");
-    return mapJSON ? mapJSON : JSON.stringify(rawMapData);
-  };
-
-  // // users selected map
-  // // declared in canvas useMemo as dependency
-  // // this way, the map matrix is only calculated when the user selects a map
-  // // otherwise, the map matrix is mutated
-  // // for now, session storage is simulating database
-  const [selectedMap, _setSelectedMap] = useState<any>(fetchRawMapData());
-
-  return <Dashboard selectedMap={selectedMap} />;
-}
-
-interface DashboardProps {
-  selectedMap: any;
-}
-
-export function Dashboard(props: DashboardProps) {
-  // // deep copy users selected map
-  // // this way map can be manipulated without affecting original
-  const [mapData, setMapData] = useState<any>(JSON.parse(props.selectedMap));
+    if (mapData === undefined) {
+        console.error("mapData is undefined");
+        return null;
+    }
 
   return (
     <div className="dashboard">

@@ -6,8 +6,8 @@ export function draw(ctx: any, canvasWidth: number, canvasHeight: number, mapDat
   ctx.lineWidth = 1;
 
   ///////////////////////////////////////////
-  // // draw grid //////////////////////////
-  // // optimized to only draw the part of the grid that is within the canvas
+  // // draw map //////////////////////////
+  // // optimized to only draw the part of the map that is within the canvas
   const verticalLineStart = mapData.y >= 0 ? mapData.y : mapData.scale ;
   const verticalLineEnd = mapData.y + (mapData.height * mapData.scale) <= canvasHeight ? (mapData.height*mapData.scale + mapData.y + mapData.scale) - mapData.scale : canvasHeight - mapData.scale ;
 

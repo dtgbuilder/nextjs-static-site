@@ -10,7 +10,7 @@ import {
     // useMemo,
 } from "react";
 
-import {MapData, defaultMapData} from "@/component/grid/utilities/map-data";
+import {MapData, defaultMapData} from "@/component/map/utilities/map-data";
 
 const localStorageCartKey = "dtg.map";
 
@@ -34,7 +34,8 @@ const updateSavedMap = (map: MapData) => {
 };
 
 export interface MapContextValue {
-    map?: MapData;
+    mapData?: MapData;
+    setMapData: (mapData: MapData) => void;
     // states: string[];
     // updateBillingFrequency: (billingFrequency: SubscriptionPeriod) => void;
     // updateDuration: (duration: SubscriptionPeriod) => void;
@@ -46,6 +47,7 @@ export interface MapContextValue {
 }
 
 export const MapContext = createContext<MapContextValue>({
+    setMapData: () => {},
     // states: [],
     // updateBillingFrequency: () => {},
     // updateDuration: () => {},
@@ -55,7 +57,7 @@ export const MapContext = createContext<MapContextValue>({
     // getPrice: () => 0
 });
 
-export function ShoppingCartContextProvider ({
+export function MapContextProvider ({
     children
 } : PropsWithChildren) {
 
@@ -147,7 +149,8 @@ export function ShoppingCartContextProvider ({
 
     return (
         <MapContext.Provider value={ {
-            map: mapData,
+            mapData,
+            setMapData,
             addEntity,
             removeEntity
         } }>

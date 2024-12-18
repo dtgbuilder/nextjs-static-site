@@ -47,7 +47,7 @@ export default function Canvas(props: Props) {
     // // to draw on canvas
     const ctx = canvas.getContext("2d");
 
-    // // generate grid hashmaps
+    // // generate map hashmaps
     const hashX = getHashX(props.mapData, canvas.width);
     const hashY = getHashY(props.mapData, canvas.height);
     console.log(props.mapData);
